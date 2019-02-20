@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Homework 1</title>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <style>
         * { font-family: Courier New;} body {padding: 200px 50px;}
         
@@ -11,6 +11,30 @@
     
 </head>
 <body>
+      <div class="container">
+         <div class="task task-1">
+             <h2>Задание 1:</h2>
+             <p>Дан код:<br>
+                var a = 1, b = 1, c, d;<br>
+                c = ++a; alert(c);           // 2 сначала производится инкремент переменной a, а затем выполняется присваивание. <br>
+                d = b++; alert(d);           // 1 присваивание значения b происходит до инкремента переменной b. <br>
+                c = (2+ ++a); alert(c);      // 5<br>
+                d = (2+ b++); alert(d);      // 4 действия выполняются со значением переменной b до её инкремента.<br>
+                alert(a);                    // 3 это значения переменных после двух инкрементов в предыдущих строках.<br>
+                alert(b);                    // 3<br>
+             </p>
+         </div>
+         <div class="task task-2" id = "task2"></div>
+         <div class="task task-3" id = "task3"></div>
+         <div class="task task-4" id = "task4"></div>
+         <div class="task task-5" id = "task5"><h2>Задание 5, 6:</h2>Реализованно в script.js без вывода данных</div>
+         <div class="task task-6" id = "task6"></div>
+         <div class="task task-7" id = "task7"></div>
+         <div class="task task-8" id = "task8"></div>
+         
+          
+      </div>
+       
     
 </body>
 </html>
