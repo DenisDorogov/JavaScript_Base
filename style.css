@@ -1,0 +1,67 @@
+.desk {
+    border: 2px solid black;
+    height: 500px;
+    width: 500px;
+    display: flex;
+    flex-flow: column wrap;
+}
+.corner,
+.edgeVL,
+.edgeVR,
+.edgeHT,
+.edgeHB {
+    background-color: gray;
+}
+
+
+.corner {
+    height: 50px;
+    width: 50px;
+}
+
+.edgeVL {
+    width: 28px;
+    padding: 20px 10px;
+    text-align: center;
+    line-height: 10px;
+    border-right: 2px solid black;
+    
+    
+}
+
+.edgeVR {
+    width: 28px;
+    padding: 20px 10px;
+    text-align: center;
+    line-height: 10px;
+    border-left: 2px solid black;
+}
+
+.edgeHT {
+    
+    width: 30px;
+    padding: 0 10px;
+    text-align: center;
+    line-height: 48px;
+    border-bottom: 2px solid black;
+
+}
+.edgeHB {
+    width: 30px;
+    padding: 0 10px;
+    text-align: center;
+    line-height: 48px;
+    border-top: 2px solid black;
+
+}
+
+.field-black {
+    height: 50px;
+    width: 50px;
+    background-color: black;
+}
+.field-white {
+    height: 50px;
+    width: 50px;
+    background-color: white;
+}
