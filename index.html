@@ -1,136 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Homework 1</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
     <style>
-        * { font-family: Courier New;} body {padding: 200px 50px;}
-        
+        * {
+            font-family: Courier New;
+        }
+
     </style>
-    
+
 </head>
+
 <body>
-      <div class="container">
-         <div class="desk">
-             <div class="corner"></div>
-             <div class="edgeVL">8</div>
-             <div class="edgeVL">7</div>
-             <div class="edgeVL">6</div>
-             <div class="edgeVL">5</div>
-             <div class="edgeVL">4</div>
-             <div class="edgeVL">3</div>
-             <div class="edgeVL">2</div>
-             <div class="edgeVL">1</div>
-             <div class="corner"></div>
-             
-             <div class="edgeHT">A</div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="edgeHB">A</div>
-             
-             <div class="edgeHT">B</div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="edgeHB">B</div>
-             
-             <div class="edgeHT">C</div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="edgeHB">C</div>
-             
-             <div class="edgeHT">D</div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="edgeHB">D</div>
-             
-             <div class="edgeHT">E</div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="edgeHB">E</div>
-             
-             <div class="edgeHT">F</div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="edgeHB">F</div>
-             
-             <div class="edgeHT">G</div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="edgeHB">G</div>
-             
-             <div class="edgeHT">H</div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="field-black"></div>
-             <div class="field-white"></div>
-             <div class="edgeHB">H</div>
-             
-             <div class="corner"></div>
-             <div class="edgeVR">8</div>
-             <div class="edgeVR">7</div>
-             <div class="edgeVR">6</div>
-             <div class="edgeVR">5</div>
-             <div class="edgeVR">4</div>
-             <div class="edgeVR">3</div>
-             <div class="edgeVR">2</div>
-             <div class="edgeVR">1</div>
-             <div class="corner"></div>
-             
-             
-         </div>
-         <div class="desk" id="deskJS"></div>
-         
-          
-      </div>
-       
-    
+    <div class="container">
+        <!--      Пробная верстка доски-->
+<!--
+        <div class="desk">
+            <div class="corner"></div>
+            <div class="edgeVL">8</div>
+            <div class="edgeVL">7</div>
+            <div class="edgeVL">6</div>
+            <div class="edgeVL">5</div>
+            <div class="edgeVL">4</div>
+            <div class="edgeVL">3</div>
+            <div class="edgeVL">2</div>
+            <div class="edgeVL">1</div>
+            <div class="corner"></div>
+
+            <div class="edgeHT">A</div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="edgeHB">A</div>
+
+            <div class="edgeHT">B</div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="edgeHB">B</div>
+
+            <div class="edgeHT">C</div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="edgeHB">C</div>
+
+            <div class="edgeHT">D</div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="edgeHB">D</div>
+
+            <div class="edgeHT">E</div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="edgeHB">E</div>
+
+            <div class="edgeHT">F</div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="edgeHB">F</div>
+
+            <div class="edgeHT">G</div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="edgeHB">G</div>
+
+            <div class="edgeHT">H</div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="field-black"></div>
+            <div class="field-white"></div>
+            <div class="edgeHB">H</div>
+
+            <div class="corner"></div>
+            <div class="edgeVR">8</div>
+            <div class="edgeVR">7</div>
+            <div class="edgeVR">6</div>
+            <div class="edgeVR">5</div>
+            <div class="edgeVR">4</div>
+            <div class="edgeVR">3</div>
+            <div class="edgeVR">2</div>
+            <div class="edgeVR">1</div>
+            <div class="corner"></div>
+
+        </div>
+-->
+        <div class="desk" id="deskJS"></div>
+        <div class="cart"></div>
+
+
+    </div>
+
+
 </body>
+
 </html>

@@ -1,9 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
 .desk {
     border: 2px solid black;
     height: 500px;
     width: 500px;
     display: flex;
     flex-flow: column wrap;
+    margin: 20px auto;
 }
 .corner,
 .edgeVL,
