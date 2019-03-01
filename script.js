@@ -53,22 +53,40 @@ function getTotalCart(cart) {
     }
     return total;
 }
+function createElementCart(id, elemClass, elemID, content) {
+    var desk = document.getElementById(id);
+    var putIn = document.createElement('div');
+    putIn.classList.toggle(elemClass);
+    putIn.id = elemID;
+    putIn.innerHTML = content;
+    desk.appendChild(putIn);
+}
 
 var cart = [
     {
         name: 'Мяч',
         price: 300,
-        count: 2
+        count: 3
     },
     {
         name: 'Бита',
         price: 1000,
-        count: 2
+        count: 1
     },
     {
         name: 'Кепка',
         price: 800,
-        count: 2
+        count: 1
     }
 ];
-console.log('Задание 2:\nСумма стоимости товаров в корзине равна: ' + getTotalCart(cart));
+var countItems = 0;
+for ( i = 0; i < cart.length; i++) {
+    createElementCart('cart', 'item', 'item' + i,'');
+    createElementCart('item' + i, 'cartImage', 'cartImage' + i, '');
+    createElementCart('item' + i, 'cartAbout', '', 'Название: ' + cart[i].name + '<br>Цена: ' + cart[i].price + '<br>Количество: ' + cart[i].count);
+    countItems += cart[i].count; 
+    
+}
+if ( countItems > 0) {
+    createElementCart('cart', 'total', '', 'Товаров ' + countItems + ' на сумму ' + getTotalCart(cart) + ' рублей.');
+} else createElementCart('cart', 'total', '', 'Корзина пуста.');
