@@ -1,15 +1,16 @@
 // Урок 5
 
-function createElement(id, elemClass, content) {
-    var desk = document.getElementById(id);
+function createElement(parent, elemClass, content) {
+    
     var putIn = document.createElement('div');
     putIn.classList.toggle(elemClass);
     putIn.innerHTML = content;
-    desk.appendChild(putIn);
+    parent.appendChild(putIn);
 }
 
 var size = 8;
 var id = 'deskJS';
+var parent = document.getElementById(id);
 var iVL = size;
 var iVR = size;
 var iHT = 0;
@@ -19,26 +20,26 @@ var iFields = 0;
 
 for (var i = 1; i <= (size + 2) ** 2; i++) {
     if (i == 1 || i == size + 2 || i == (size + 2) ** 2 - size - 1 || i == (size + 2) ** 2) {
-        createElement(id, 'corner', '');
+        createElement(parent, 'corner', '');
     } else if (i > 1 && i <= size + 1) {
-        createElement(id, 'edgeVL', iVL);
+        createElement(parent, 'edgeVL', iVL);
         iVL--;
     } else if (i > (size + 2) ** 2 - size - 1 && i <= (size + 2) ** 2) {
-        createElement(id, 'edgeVR', iVR);
+        createElement(parent, 'edgeVR', iVR);
         iVR--;
     } else if (i % (size + 2) == 1) {
-        createElement(id, 'edgeHT', letters[iHT]);
+        createElement(parent, 'edgeHT', letters[iHT]);
         iHT++;
     } else if (i % (size + 2) == 0) {
-        createElement(id, 'edgeHB', letters[iHB]);
+        createElement(parent, 'edgeHB', letters[iHB]);
         iHB++;
         iFields++;
     } else if (i % (size + 2) >= 2 && i % (size + 2) <= 9) {
         if (iFields % 2 == 0) {
-            createElement(id, 'field-white', '');
+            createElement(parent, 'field-white', '');
             iFields++;
         } else {
-            createElement(id, 'field-black', '');
+            createElement(parent, 'field-black', '');
             iFields++;
         }
     }
