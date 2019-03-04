@@ -6,75 +6,43 @@
 .container {
     width: 1200px;
     margin: 0 auto;
+    background-color: #eee;
 }
-.desk {
-    border: 2px solid black;
-    height: 500px;
-    width: 500px;
+.catalog {
+/*    min-height: 500px;*/
+    width: 1000px;
     display: flex;
-    flex-flow: column wrap;
-    margin: 20px auto 50px;
-}
-.corner,
-.edgeVL,
-.edgeVR,
-.edgeHT,
-.edgeHB {
-    background-color: #ddd;
-}
-
-
-.corner {
-    height: 50px;
-    width: 50px;
-}
-
-.edgeVL {
-    width: 28px;
-    padding: 20px 10px;
-    text-align: center;
-    line-height: 10px;
-    border-right: 2px solid black;
-    
+    justify-content: space-between;
+    flex-flow: wrap;
+    margin: 50px auto;
     
 }
 
-.edgeVR {
-    width: 28px;
-    padding: 20px 10px;
-    text-align: center;
-    line-height: 10px;
-    border-left: 2px solid black;
+.item {
+    height: 250px;
+    width: 250px;
+    margin: 20px 20px;
+    background-size: auto;
+/*    display: flex;*/
 }
-
-.edgeHT {
-    
-    width: 30px;
-    padding: 0 10px;
-    text-align: center;
-    line-height: 48px;
-    border-bottom: 2px solid black;
-
+.item img {
+    height: 250px;
+    width: 250px;
 }
-.edgeHB {
-    width: 30px;
-    padding: 0 10px;
-    text-align: center;
-    line-height: 48px;
-    border-top: 2px solid black;
-
-}
-
-.field-black {
+.button-buy {
     height: 50px;
-    width: 50px;
-    background-color: black;
+    width: 100%;
+    background-color: cornflowerblue;
+    text-align: center;
+    line-height: 50px;
+    font-size: 30px;
+    color: beige;
+    margin-top: auto;
 }
-.field-white {
-    height: 50px;
-    width: 50px;
-    background-color: white;
+.button-buy:hover {
+    background-color: darkgray;
 }
+
 
 .cart {
     width: 400px;
@@ -85,13 +53,6 @@
 .cart h2 {
     text-align: center;
     margin-bottom: 30px;
-}
-.item {
-    height: 60px;
-    background-color: cornflowerblue;
-    margin-bottom: 20px;
-    padding: 20px;
-    display: flex;
 }
 .cartImage {
     width: 60px;
