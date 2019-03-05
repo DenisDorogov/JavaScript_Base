@@ -4,37 +4,37 @@ var catalogue = [
     {
         name: 'Мяч',
         price: 300,
-        count: 3,
+        count: 0,
         src: 'img/item1cat.jpg'
     },
     {
         name: 'Бита',
         price: 1000,
-        count: 3,
+        count: 0,
         src: 'img/item2cat.jpg'
     },
     {
         name: 'Кепка',
         price: 800,
-        count: 3,
+        count: 0,
         src: 'img/item3cat.jpg'
     },
     {
         name: 'Перчатка',
         price: 1500,
-        count: 3,
+        count: 0,
         src: 'img/item4cat.jpg'
     },
     {
         name: 'Шлем',
         price: 2000,
-        count: 3,
+        count: 0,
         src: 'img/item5cat.jpg'
     },
     {
         name: 'Сумка',
         price: 1200,
-        count: 3,
+        count: 0,
         src: 'img/item6cat.jpg'
     }
 ];
@@ -42,6 +42,7 @@ var cart = [];
 var $cart = document.getElementById('cart');
 var $catalogue = document.getElementById('catalogue');
 var itemNum = '';
+var totalCart = 0;
 
 $catalogue.addEventListener('click', handleAddClick);
 
@@ -50,24 +51,43 @@ function handleAddClick(event) {
         var itemId = event.target.id;
         for (var i = 0; i < $catalogue.children.length; i++) {
             var catChildren = $catalogue.children;
-            if ( itemId == catChildren[i].id ) {
+            if (itemId == catChildren[i].id) {
                 itemNum = i;
             }
-        }         
-//        console.log(itemNum);
+        }
+        //        for (j = 0; j != cart.length; j++) {
+        //            if (cart[j] == catalogue[itemNum]) {
+        //                cart[j].count += 1;
+        //            } else {
+        //                cart.push(catalogue[itemNum]);
+        //            }
+        //        }
         cart.push(catalogue[itemNum]);
         console.log(cart);
         buildCart(cart);
+        getTotalCart(cart);
     }
 }
+
+function getTotalCart(cart) {
+    totalCart = totalCart + cart[cart.length - 1].price;
+    var $totalCart = document.createElement('div');
+    $totalCart.classList.toggle('total');
+    if (totalCart == 0) {
+        $totalCart.innerHTML = 'Корзина пуста.';
+    } else {
+        $totalCart.innerHTML = 'Сумма товара: ' + totalCart;
+    }
+    $cart.appendChild($totalCart);
+
+}
+
 function buildCart(cart) {
     $cart.innerHTML = '';
     for (var i = 0; i < cart.length; i++) {
         var $cartItem = document.createElement('div');
-        //        console.log($cartItem);
         $cartItem.classList.toggle('cart-item');
         $cartItem.id = 'cart-item' + i;
-//        $cartItem.innerHTML = cart[i].name;
         $cart.appendChild($cartItem);
         var $cartImg = document.createElement('img');
         $cartImg.src = cart[i].src;
@@ -76,12 +96,7 @@ function buildCart(cart) {
         var $cartAbout = document.createElement('div');
         $cartAbout.classList.toggle('cart-item-about');
         $cartAbout.innerHTML = 'Наименование товара: ' + cart[i].name + '<br>Цена товара: ' + cart[i].price + '<br>Количество: ';
-        
         $cartItem.appendChild($cartAbout);
-
-        //        var $cartItemImg
-        //        $cartItem.appendChild()
-
     }
 }
 
