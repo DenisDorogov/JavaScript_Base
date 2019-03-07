@@ -46,23 +46,24 @@ var totalCart = 0;
 
 $catalogue.addEventListener('click', handleAddClick);
 
-function handleAddClick(event) {
-    if (event.target.className === 'button-buy') {
-        var itemId = event.target.id;
+function handleAddClick(event) { // Функция реагирования на событие.
+    if (event.target.className === 'button-buy') { //Проверяем, был ли клик по кнопке.
+        var itemId = event.target.id; // Извлекаем id элемента по которому кликнули.
+        var catChildren = $catalogue.children; //Извлекаем массив элементов каталога.
+
         for (var i = 0; i < $catalogue.children.length; i++) {
-            var catChildren = $catalogue.children;
-            if (itemId == catChildren[i].id) {
-                itemNum = i;
+            if (itemId == catChildren[i].id) { // Выявляем какую кнопку кликнули.
+                itemNum = i; // Получаем номер элемента, в массиве каталога товаров.
             }
         }
-        //        for (j = 0; j != cart.length; j++) {
-        //            if (cart[j] == catalogue[itemNum]) {
-        //                cart[j].count += 1;
-        //            } else {
-        //                cart.push(catalogue[itemNum]);
-        //            }
-        //        }
-        cart.push(catalogue[itemNum]);
+        var repeatItem = false;
+        for (j = 0; j <= cart.length; j++) {
+            if ( cart[j] == catalogue[itemNum] ) {
+                cart[j].count = cart[j].count + 1;
+                repeatItem = true;
+            } 
+        }
+        if (!repeatItem) cart.push(catalogue[itemNum]);
         console.log(cart);
         buildCart(cart);
         getTotalCart(cart);
@@ -73,7 +74,7 @@ function getTotalCart(cart) {
     totalCart = totalCart + cart[cart.length - 1].price;
     var $totalCart = document.createElement('div');
     $totalCart.classList.toggle('total');
-    if (totalCart == 0) {
+    if (cart.length == 0) {
         $totalCart.innerHTML = 'Корзина пуста.';
     } else {
         $totalCart.innerHTML = 'Сумма товара: ' + totalCart;
@@ -95,7 +96,7 @@ function buildCart(cart) {
         $cartItem.appendChild($cartImg);
         var $cartAbout = document.createElement('div');
         $cartAbout.classList.toggle('cart-item-about');
-        $cartAbout.innerHTML = 'Наименование товара: ' + cart[i].name + '<br>Цена товара: ' + cart[i].price + '<br>Количество: ';
+        $cartAbout.innerHTML = 'Наименование товара: ' + cart[i].name + '<br>Цена товара: ' + cart[i].price + '<br>Количество: ' + cart[i].count;
         $cartItem.appendChild($cartAbout);
     }
 }
