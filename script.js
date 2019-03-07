@@ -4,37 +4,37 @@ var catalogue = [
     {
         name: 'Мяч',
         price: 300,
-        count: 0,
+        count: 1,
         src: 'img/item1cat.jpg'
     },
     {
         name: 'Бита',
         price: 1000,
-        count: 0,
+        count: 1,
         src: 'img/item2cat.jpg'
     },
     {
         name: 'Кепка',
         price: 800,
-        count: 0,
+        count: 1,
         src: 'img/item3cat.jpg'
     },
     {
         name: 'Перчатка',
         price: 1500,
-        count: 0,
+        count: 1,
         src: 'img/item4cat.jpg'
     },
     {
         name: 'Шлем',
         price: 2000,
-        count: 0,
+        count: 1,
         src: 'img/item5cat.jpg'
     },
     {
         name: 'Сумка',
         price: 1200,
-        count: 0,
+        count: 1,
         src: 'img/item6cat.jpg'
     }
 ];
@@ -58,25 +58,28 @@ function handleAddClick(event) { // Функция реагирования на
         }
         var repeatItem = false;
         for (j = 0; j <= cart.length; j++) {
-            if ( cart[j] == catalogue[itemNum] ) {
+            if (cart[j] == catalogue[itemNum]) {
                 cart[j].count = cart[j].count + 1;
                 repeatItem = true;
-            } 
+            }
         }
         if (!repeatItem) cart.push(catalogue[itemNum]);
-        console.log(cart);
         buildCart(cart);
         getTotalCart(cart);
     }
 }
+getTotalCart(cart);
 
 function getTotalCart(cart) {
-    totalCart = totalCart + cart[cart.length - 1].price;
+    var totalCart = 0;
     var $totalCart = document.createElement('div');
     $totalCart.classList.toggle('total');
     if (cart.length == 0) {
         $totalCart.innerHTML = 'Корзина пуста.';
     } else {
+        for (i = 0; i < cart.length; i++) {
+            totalCart += cart[i].price * cart[i].count;
+        }
         $totalCart.innerHTML = 'Сумма товара: ' + totalCart;
     }
     $cart.appendChild($totalCart);
