@@ -9,13 +9,11 @@
     background-color: #eee;
 }
 .catalogue {
-/*    min-height: 500px;*/
     width: 1000px;
     display: flex;
     justify-content: space-between;
     flex-flow: wrap;
     margin: 50px auto;
-    
 }
 
 .item {
@@ -23,7 +21,6 @@
     width: 250px;
     margin: 20px 20px;
     background-size: contain;
-/*    display: flex;*/
 }
 .item img {
     height: 250px;
@@ -37,12 +34,10 @@
     line-height: 50px;
     font-size: 30px;
     color: beige;
-/*    margin-top: auto;*/
 }
 .button-buy:hover {
     background-color: darkgray;
 }
-
 
 .cart {
     width: 960px;
@@ -72,9 +67,16 @@
     height: 60px;
     font-size: 20px;
 }
+.cart-clear {
+    width: 250px;
+    float: left;
+    font-size: 1em;
+
+}
 .total {
     font-size: 2em;
-    text-align: center;
+    text-align: right;
     font-weight: 500;
     height: 500px;
+
 }
