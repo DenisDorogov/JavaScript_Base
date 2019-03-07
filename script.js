@@ -78,6 +78,15 @@ function handleRemoveClick(event) {
         buildCart(cart);
         getTotalCart(cart);
     }
+    if (event.target.className === 'cart-item-clear') {
+        for ( i = 0; i < cart.length; i++) {
+            if (event.target.id == 'cart-item-clear' + i) {
+                cart.splice(i, 1);
+            }
+        }
+        buildCart(cart);
+        getTotalCart(cart);
+    }
 }
 
 function getTotalCart(cart) {
@@ -100,6 +109,7 @@ function buildCart(cart) {
         createElement('cart', 'div', 'cart-item', 'cart-item' + i, '', '');
         createElement('cart-item' + i, 'img', 'cart-item-img', '', cart[i].src, '');
         createElement('cart-item' + i, 'div', 'cart-item-about', '', '', 'Наименование товара: ' + cart[i].name + '<br>Цена товара: ' + cart[i].price + '<br>Количество: ' + cart[i].count);
+        createElement('cart-item' + i, 'button', 'cart-item-clear', 'cart-item-clear' + i, '', 'Удалить');
     }
 }
 

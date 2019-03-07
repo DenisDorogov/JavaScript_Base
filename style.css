@@ -67,6 +67,13 @@
     height: 60px;
     font-size: 20px;
 }
+
+.cart-item-clear {
+    font-size: 20px;
+    height: 30px;
+    margin: 35px 0px 35px auto;
+}
+
 .cart-clear {
     width: 250px;
     float: left;
