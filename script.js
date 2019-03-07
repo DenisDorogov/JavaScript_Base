@@ -45,6 +45,8 @@ var itemNum = '';
 var totalCart = 0;
 
 $catalogue.addEventListener('click', handleAddClick);
+$cart.addEventListener('click', handleRemoveClick);
+
 
 function handleAddClick(event) { // Функция реагирования на событие.
     if (event.target.className === 'button-buy') { //Проверяем, был ли клик по кнопке.
@@ -69,6 +71,14 @@ function handleAddClick(event) { // Функция реагирования на
     }
 }
 getTotalCart(cart);
+
+function handleRemoveClick(event) {
+    if (event.target.className === 'cart-clear') {
+        cart = [];
+        buildCart(cart);
+        getTotalCart(cart);
+    }
+}
 
 function getTotalCart(cart) {
     var totalCart = 0;
