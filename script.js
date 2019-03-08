@@ -44,8 +44,8 @@ var $catalogue = document.getElementById('catalogue');
 var itemNum = '';
 var totalCart = 0;
 
-$catalogue.addEventListener('click', handleAddClick);
-$cart.addEventListener('click', handleRemoveClick);
+$catalogue.addEventListener('click', handleAddClick); // Наблюдение за кликами в каталоге.
+$cart.addEventListener('click', handleRemoveClick); // Наблюдение за кликами в корзине.
 
 
 function handleAddClick(event) { // Функция реагирования на событие.
@@ -71,24 +71,32 @@ function handleAddClick(event) { // Функция реагирования на
     }
 }
 getTotalCart(cart);
-
+// Удаляем товары из корзины по клику.
 function handleRemoveClick(event) {
     if (event.target.className === 'cart-clear') {
         cart = [];
         buildCart(cart);
         getTotalCart(cart);
+        catalogCountsClear();
     }
     if (event.target.className === 'cart-item-clear') {
         for ( i = 0; i < cart.length; i++) {
             if (event.target.id == 'cart-item-clear' + i) {
+                cart[i].count = 1;
                 cart.splice(i, 1);
+                
             }
         }
         buildCart(cart);
         getTotalCart(cart);
     }
 }
+// Обнуляем обекты каталога
+function catalogCountsClear() {
+    for (i = 0; i < catalogue.length; i++) catalogue[i].count = 1;
+}
 
+// Вычисляем стоимость корзины.
 function getTotalCart(cart) {
     var totalCart = 0;
     if (cart.length == 0) {
@@ -102,7 +110,7 @@ function getTotalCart(cart) {
     createElement('total', 'button', 'cart-clear', '', '', 'Очистить корзину');
 
 }
-
+// Формируем корзину.
 function buildCart(cart) {
     $cart.innerHTML = '';
     for (var i = 0; i < cart.length; i++) {
@@ -112,8 +120,8 @@ function buildCart(cart) {
         createElement('cart-item' + i, 'button', 'cart-item-clear', 'cart-item-clear' + i, '', 'Удалить');
     }
 }
-
-function createElement(parentID, type, elemClass, elemId, src, content) {
+// Функция создания DOM элемента.
+function createElement(parentID, type, elemClass, elemId, src, content) { 
     var $parent = document.getElementById(parentID);
     var $putIn = document.createElement(type);
     $putIn.classList.toggle(elemClass);

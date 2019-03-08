@@ -5,6 +5,7 @@
 
 .container {
     width: 1200px;
+    min-height: 1300px;
     margin: 0 auto;
     background-color: #eee;
 }
@@ -75,15 +76,16 @@
 }
 
 .cart-clear {
-    width: 250px;
     float: left;
     font-size: 1em;
+    padding: 5px 20px;
+    background-color: white;
 
 }
 .total {
     font-size: 2em;
     text-align: right;
     font-weight: 500;
-    height: 500px;
+    line-height: 50px;
 
 }
