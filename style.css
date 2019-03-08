@@ -89,3 +89,15 @@
     line-height: 50px;
 
 }
+
+.button-next {
+    height: 40px;
+    padding: 10px 30px;
+    float: right;
+    margin-top: 40px;
+}
+
+.address-form {
+    min-height: 300px;
+    padding: 30px;
+}

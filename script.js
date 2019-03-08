@@ -84,7 +84,6 @@ function handleRemoveClick(event) {
             if (event.target.id == 'cart-item-clear' + i) {
                 cart[i].count = 1;
                 cart.splice(i, 1);
-                
             }
         }
         buildCart(cart);
