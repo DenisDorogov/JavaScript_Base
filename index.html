@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id='container'>
         <div class="catalogue" id="catalogue">
             <div class="item" id="item1">
                 <img src="img/item1cat.jpg" alt="Товар каталога">
@@ -44,18 +44,23 @@
         </div>
         <h2>Корзина</h2>
         <div class="cart" id="cart">
-            <button class="button-next" id="button-next1">Далее</button>
+<!--            <button class="button-next" id="button-next1">Далее</button>-->
 
         </div>
-        <div class="address">
+        <div class="address" id="address" >
             <form class="address-form">
-                <label for="street"></label>
-                <input type="text" id="street">
+                <label for="street">Адрес: </label>
+                <input type="text" id="street" class="input-field">
             </form>
             <button class="button-next" id="button-next2">Далее</button>
         </div>
-        <div class="comment">
-            <form class="comment-form"></form>
+        <div class="comment" id="comment">
+            <form class="comment-form">
+                <label for="comment-field">Коментарий к заказу: </label>
+                <br>
+                <br>
+                <textarea type="text" id="comment-field" class="comment-field"></textarea>
+            </form>
             <button class="button-next" id="button-next3">Далее</button>
         </div>
     </div>
