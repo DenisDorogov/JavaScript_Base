@@ -1,197 +1,148 @@
-//// Урок 6
+//// Урок 7
 
 var catalogue = [
     {
         name: 'Мяч',
         price: 300,
-        count: 0,
+        count: 1,
         src: 'img/item1cat.jpg'
     },
     {
         name: 'Бита',
         price: 1000,
-        count: 0,
+        count: 1,
         src: 'img/item2cat.jpg'
     },
     {
         name: 'Кепка',
         price: 800,
-        count: 0,
+        count: 1,
         src: 'img/item3cat.jpg'
     },
     {
         name: 'Перчатка',
         price: 1500,
-        count: 0,
+        count: 1,
         src: 'img/item4cat.jpg'
     },
     {
         name: 'Шлем',
         price: 2000,
-        count: 0,
+        count: 1,
         src: 'img/item5cat.jpg'
     },
     {
         name: 'Сумка',
         price: 1200,
-        count: 0,
+        count: 1,
         src: 'img/item6cat.jpg'
     }
 ];
 var cart = [];
 var $cart = document.getElementById('cart');
 var $catalogue = document.getElementById('catalogue');
+var $container = document.getElementById('container');
 var itemNum = '';
 var totalCart = 0;
 
-$catalogue.addEventListener('click', handleAddClick);
+$catalogue.addEventListener('click', handleAddClick); // Наблюдение за кликами в каталоге.
+$cart.addEventListener('click', handleRemoveClick); // Наблюдение за кликами в корзине.
+$container.addEventListener('click', handleNextClick); // Наблюдение за кликами "Далее".
 
-function handleAddClick(event) {
-    if (event.target.className === 'button-buy') {
-        var itemId = event.target.id;
+function handleAddClick(event) { // Функция реагирования на событие.
+    if (event.target.className === 'button-buy') { //Проверяем, был ли клик по кнопке.
+        var itemId = event.target.id; // Извлекаем id элемента по которому кликнули.
+        var catChildren = $catalogue.children; //Извлекаем массив элементов каталога.
+
         for (var i = 0; i < $catalogue.children.length; i++) {
-            var catChildren = $catalogue.children;
-            if (itemId == catChildren[i].id) {
-                itemNum = i;
+            if (itemId == catChildren[i].id) { // Выявляем какую кнопку кликнули.
+                itemNum = i; // Получаем номер элемента, в массиве каталога товаров.
             }
         }
-        //        for (j = 0; j != cart.length; j++) {
-        //            if (cart[j] == catalogue[itemNum]) {
-        //                cart[j].count += 1;
-        //            } else {
-        //                cart.push(catalogue[itemNum]);
-        //            }
-        //        }
-        cart.push(catalogue[itemNum]);
-        console.log(cart);
+        var repeatItem = false;
+        for (j = 0; j <= cart.length; j++) { // Проверяем, есть ли такие товары уже в корзине.
+            if (cart[j] == catalogue[itemNum]) { // Если есть...
+                cart[j].count = cart[j].count + 1; //... тогда увеличиваем количество этого товара.
+                repeatItem = true;
+            }
+        }
+        if (!repeatItem) cart.push(catalogue[itemNum]); // Если такого товара в корзине нет, то добавляем.
         buildCart(cart);
         getTotalCart(cart);
     }
 }
-
-function getTotalCart(cart) {
-    totalCart = totalCart + cart[cart.length - 1].price;
-    var $totalCart = document.createElement('div');
-    $totalCart.classList.toggle('total');
-    if (totalCart == 0) {
-        $totalCart.innerHTML = 'Корзина пуста.';
-    } else {
-        $totalCart.innerHTML = 'Сумма товара: ' + totalCart;
+getTotalCart(cart);
+// Удаляем товары из корзины по клику.
+function handleRemoveClick(event) {
+    if (event.target.className === 'cart-clear') { // Если нажата кнопка очистки корзины.
+        cart = []; // Обнуляем массив корзины.
+        buildCart(cart);
+        getTotalCart(cart);
+        catalogCountsClear();
     }
-    $cart.appendChild($totalCart);
-
+    if (event.target.className === 'cart-item-clear') { // Если нажата кнопка удаления элемента.
+        for ( i = 0; i < cart.length; i++) {
+            if (event.target.id == 'cart-item-clear' + i) {
+                cart[i].count = 1;
+                cart.splice(i, 1);
+            }
+        }
+        buildCart(cart);
+        getTotalCart(cart);
+    }
+}
+// Обнуляем обекты каталога
+function catalogCountsClear() {
+    for (i = 0; i < catalogue.length; i++) catalogue[i].count = 1;
 }
 
+// Вычисляем стоимость корзины.
+function getTotalCart(cart) {
+    totalCart = 0;
+    if (cart.length == 0) {
+        createElement('cart', 'div', 'total', 'total', '', 'Корзина пуста.');
+    } else {
+        for (i = 0; i < cart.length; i++) {
+            totalCart += cart[i].price * cart[i].count;
+        }
+        
+        createElement('cart', 'div', 'total', 'total', '', 'Сумма товара: ' + totalCart);
+        createElement('total', 'button', 'cart-clear', '', '', 'Очистить корзину');
+        createElement('cart', 'button', 'button-next', 'button-next1', '', 'Далее');
+
+    }
+//    createElement('total', 'button', 'cart-clear', '', '', 'Очистить корзину');
+
+}
+// Формируем корзину.
 function buildCart(cart) {
     $cart.innerHTML = '';
     for (var i = 0; i < cart.length; i++) {
-        var $cartItem = document.createElement('div');
-        $cartItem.classList.toggle('cart-item');
-        $cartItem.id = 'cart-item' + i;
-        $cart.appendChild($cartItem);
-        var $cartImg = document.createElement('img');
-        $cartImg.src = cart[i].src;
-        $cartImg.classList.toggle('cart-item-img');
-        $cartItem.appendChild($cartImg);
-        var $cartAbout = document.createElement('div');
-        $cartAbout.classList.toggle('cart-item-about');
-        $cartAbout.innerHTML = 'Наименование товара: ' + cart[i].name + '<br>Цена товара: ' + cart[i].price + '<br>Количество: ';
-        $cartItem.appendChild($cartAbout);
+        createElement('cart', 'div', 'cart-item', 'cart-item' + i, '', '');
+        createElement('cart-item' + i, 'img', 'cart-item-img', '', cart[i].src, '');
+        createElement('cart-item' + i, 'div', 'cart-item-about', '', '', 'Наименование товара: ' + cart[i].name + '<br>Цена товара: ' + cart[i].price + '<br>Количество: ' + cart[i].count);
+        createElement('cart-item' + i, 'button', 'cart-item-clear', 'cart-item-clear' + i, '', 'Удалить');
     }
 }
+// Функция создания DOM элемента.
+function createElement(parentID, type, elemClass, elemId, src, content) { 
+    var $parent = document.getElementById(parentID);
+    var $putIn = document.createElement(type);
+    $putIn.classList.toggle(elemClass);
+    $putIn.id = elemId;
+    $putIn.src = src;
+    $putIn.innerHTML = content;
+    $parent.appendChild($putIn);
+}
 
+function handleNextClick(event) {
+    if (event.target.id == 'button-next1'){
+        document.getElementById('address').style.display = 'block';
+        document.getElementById('button-next1').style.display = 'none';
+    } 
+    if (event.target.id == 'button-next2') {
+        document.getElementById('comment').style.display = 'block';
+        document.getElementById('button-next2').style.display = 'none';
 
-
-
-//
-//function createElement(parent, elemClass, content) {
-//    
-//    var putIn = document.createElement('div');
-//    putIn.classList.toggle(elemClass);
-//    putIn.innerHTML = content;
-//    parent.appendChild(putIn);
-//}
-//
-//var size = 8;
-//var id = 'deskJS';
-//var parent = document.getElementById(id);
-//var iVL = size;
-//var iVR = size;
-//var iHT = 0;
-//var iHB = 0;
-//var letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'O', 'P'];
-//var iFields = 0;
-//
-//for (var i = 1; i <= (size + 2) ** 2; i++) {
-//    if (i == 1 || i == size + 2 || i == (size + 2) ** 2 - size - 1 || i == (size + 2) ** 2) {
-//        createElement(parent, 'corner', '');
-//    } else if (i > 1 && i <= size + 1) {
-//        createElement(parent, 'edgeVL', iVL);
-//        iVL--;
-//    } else if (i > (size + 2) ** 2 - size - 1 && i <= (size + 2) ** 2) {
-//        createElement(parent, 'edgeVR', iVR);
-//        iVR--;
-//    } else if (i % (size + 2) == 1) {
-//        createElement(parent, 'edgeHT', letters[iHT]);
-//        iHT++;
-//    } else if (i % (size + 2) == 0) {
-//        createElement(parent, 'edgeHB', letters[iHB]);
-//        iHB++;
-//        iFields++;
-//    } else if (i % (size + 2) >= 2 && i % (size + 2) <= 9) {
-//        if (iFields % 2 == 0) {
-//            createElement(parent, 'field-white', '');
-//            iFields++;
-//        } else {
-//            createElement(parent, 'field-black', '');
-//            iFields++;
-//        }
-//    }
-//}
-//
-//// Задание 2
-//
-//function getTotalCart(cart) {
-//    var total = 0;
-//    for (i = 0; i < cart.length; i++) {
-//        total += cart[i].price * cart[i].count;
-//    }
-//    return total;
-//}
-//function createElementCart(id, elemClass, elemID, content) {
-//    var desk = document.getElementById(id);
-//    var putIn = document.createElement('div');
-//    putIn.classList.toggle(elemClass);
-//    putIn.id = elemID;
-//    putIn.innerHTML = content;
-//    desk.appendChild(putIn);
-//}
-//
-//var cart = [
-//    {
-//        name: 'Мяч',
-//        price: 300,
-//        count: 3
-//    },
-//    {
-//        name: 'Бита',
-//        price: 1000,
-//        count: 1
-//    },
-//    {
-//        name: 'Кепка',
-//        price: 800,
-//        count: 1
-//    }
-//];
-//var countItems = 0;
-//for ( i = 0; i < cart.length; i++) {
-//    createElementCart('cart', 'item', 'item' + i,'');
-//    createElementCart('item' + i, 'cartImage', 'cartImage' + i, '');
-//    createElementCart('item' + i, 'cartAbout', '', 'Название: ' + cart[i].name + '<br>Цена: ' + cart[i].price + '<br>Количество: ' + cart[i].count);
-//    countItems += cart[i].count; 
-//    
-//}
-//if ( countItems > 0) {
-//    createElementCart('cart', 'total', '', 'Товаров ' + countItems + ' на сумму ' + getTotalCart(cart) + ' рублей.');
-//} else createElementCart('cart', 'total', '', 'Корзина пуста.');
+    }
+}
