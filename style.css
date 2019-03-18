@@ -38,6 +38,7 @@
 }
 .button-buy:hover {
     background-color: darkgray;
+    cursor: pointer;
 }
 
 .cart {
@@ -76,6 +77,7 @@
     font-size: 20px;
     height: 30px;
     margin: 35px 0px 35px auto;
+    cursor: pointer;
 }
 
 .cart-clear {
@@ -83,6 +85,7 @@
     font-size: 1em;
     padding: 5px 20px;
     background-color: white;
+    cursor: pointer;
 
 }
 .total {
@@ -103,6 +106,7 @@
     background-color: white;
     font-size: 1em;
     text-align: center;
+    cursor: pointer;
     
     
     
